@@ -1,0 +1,1336 @@
+@import "fonts"
+@import "libs"
+@import "vars"
+
+*::-webkit-input-placeholder
+  color: #666
+  opacity: 1
+
+*:-moz-placeholder
+  color: #666
+  opacity: 1
+
+*::-moz-placeholder
+  color: #666
+  opacity: 1
+
+*:-ms-input-placeholder
+  color: #666
+  opacity: 1
+
+html, body
+  height: 100%
+
+body
+  font-size: 16px
+  overflow: auto
+  position: relative
+  line-height: 1.25
+  font-family: $default-font
+  opacity: 1
+  width: 100%
+  min-width: 1200px
+  color: #000
+
+p, h1, h2, h3, h4, ul
+  margin: 0
+  padding: 0
+  list-style-type: none
+
+a, a:hover, a:active, a:visited, a:link, a:focus
+  color: inherit
+  text-decoration: none
+  outline: none
+
+button, input, textarea
+  outline: none
+
+header, section, footer
+  max-width: 1920px
+  min-width: 1200px
+  margin: 0 auto
+  overflow: hidden
+
+.owl-carousel .owl-item img
+  transform-style: flat
+
+
+@mixin opacity($opacity)
+  opacity: $opacity / 100
+  filter: alpha(opacity=$opacity)
+
+@keyframes pulse-outer
+  0%
+    @include opacity(100)
+  50%
+    @include opacity(50)
+  100%
+    @include opacity(0)
+
+@keyframes pulse-inner
+  0%
+    @include opacity(0)
+    transform: scale(0)
+  100%
+    @include opacity(100)
+    transform: scale(1)
+
+.preloader
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  z-index: 100
+  background-color: #2a2a2a
+  .pulse
+    position: relative
+    left: 50%
+    top: 50vh
+    margin:
+      left: -40px
+      top: -40px
+    &::before, &::after
+      content: ''
+      border: 5px solid #15d2db
+      width: 80px
+      height: 80px
+      border-radius: 500px
+      position: absolute
+    &::before
+      animation: pulse-outer .8s ease-in infinite
+    &::after
+      animation: pulse-inner .8s linear infinite
+      border: 5px solid #76dd9e
+
+.header
+  &-top
+    padding-top: 18px
+    padding-bottom: 22px
+    height: 100%
+    &.nav-fixed
+      animation: nav ease .5s
+      position: fixed
+      background: #fff
+      top: 0
+      left: 0
+      right: 0
+      z-index: 100
+      box-shadow: 0 5px 10px rgba(0,0,0,.3)
+      height: auto
+      transform: translateZ(0)
+    .logo, .nav, .phone, .consult
+      float: left
+    .logo
+      background: url(../img/logo.png) no-repeat left top
+      padding-top: 8px
+      padding-left: 78px
+      font-family: 'IgraSans'
+      font-size: 17px
+      text-transform: uppercase
+      line-height: 1
+      padding-bottom: 4px
+    .nav
+      padding-left: 16px
+      padding-top: 18px
+      li
+        float: left
+        margin-right: 15px
+        font-size: 15px
+        &:last-child
+          margin-right: 0
+        a:hover
+          text-decoration: underline
+    .phone
+      background: url(../img/header-phone.png) no-repeat left top
+      font-size: 21px
+      line-height: 1.1
+      height: 42px
+      padding-left: 50px
+      margin-left: 22px
+      margin-top: 5px
+      .text
+        font-size: 14px
+    .consult
+      padding-top: 5px
+      margin-left: 8px
+      .button
+        display: inline-block
+        border: solid 3px #fcd748
+        border-radius: 10em
+        padding: 10px 21px
+        font-size: 15px
+  &-center
+    .header-slider
+      position: relative
+      .owl-item.active
+        .item
+          .h1
+            opacity: 1
+            transform: translateX(0)
+          .button
+            opacity: 1
+            transform: translateY(0)
+      .item
+        padding-top: 250px
+        padding-bottom: 115px
+        text-align: center
+        .h1
+          font-family: 'AvenirNextDemi'
+          font-size: 45px
+          line-height: 1
+          padding-bottom: 100px
+          text-align: left
+          color: #fff
+          transition: all 1.3s ease
+          transition-delay: .2s
+          transform: translateX(100px)
+          opacity: 0
+        .button
+          display: inline-block
+          font-size: 17px
+          padding: 19px 40px 21px
+          background: linear-gradient(to top, #fd9e11, #fee54c)
+          border-radius: 10em
+          box-shadow: 0 6px 0 #b19733
+          transition: all 1.3s ease
+          transition-delay: .2s
+          transform: translateY(100px)
+          opacity: 0
+      .owl-nav
+        display: block
+        .owl-prev, .owl-next
+          width: 48px
+          height: 48px
+          border: solid 3px #e1e9ec
+          color: #e1e9ec
+          background: transparent
+          font-size: 30px
+          border-radius: 10em
+          text-align: center
+          line-height: 48px
+          position: absolute
+          top: 49%
+          transition: all .5s ease
+          i
+            position: relative
+            top: -3px
+            left: -2px
+          &:hover
+            color: #fff
+            border-color: #fff
+        .owl-prev
+          left: 20px
+        .owl-next
+          right: 20px
+          i
+            left: 2px
+
+.s
+  &-about
+    padding-top: 55px
+    padding-bottom: 55px
+    .about
+      float: left
+      padding-left: 100px
+      width: 45%
+      .h2
+        font-weight: 500
+        font-size: 25px
+        padding-top: 15px
+        padding-bottom: 22px
+      p
+        font-size: 15px
+        padding-bottom: 18px
+        &.bold
+          font-weight: 500
+    .about-slider
+      float: left
+      margin-left: 30px
+      width: 33%
+      .owl-item
+        img
+          width: auto
+    .about-right
+      float: left
+      width: 19%
+      .more
+        font-size: 16px
+        text-align: left
+        padding-left: 35px
+        display: block
+        text-decoration: underline
+        &:hover
+          text-decoration: none
+      .dotsCont
+        padding-top: 50px
+        text-align: center
+        [data-dot]
+          transform: scale(.6)
+          transition: transform .3s ease
+          cursor: pointer
+          margin-bottom: -10px
+          &.active
+            transform: none
+          img
+            border-radius: 10em
+            box-shadow: 0 0 50px rgba(0,0,0,.5)
+  &-compl
+    background: linear-gradient(to bottom, #f3f3f3, #f2f2f2)
+    padding-top: 65px
+    padding-bottom: 65px
+    .h
+      line-height: 1.1
+      float: left
+      width: 50%
+      .h2
+        font-weight: 500
+        font-size: 25px
+      .text
+        color: #4c4c4c
+        font-size: 15px
+    .dotsCont
+      float: left
+      width: 50%
+      text-align: right
+      padding-top: 5px
+      [data-dot]
+        display: inline-block
+        margin-right: 20px
+        color: #4c4c4c
+        cursor: pointer
+        font-size: 17px
+        &.active, &:hover
+          color: #000
+          text-decoration: underline
+        &:last-child
+          margin-right: 0
+    .compl-slider
+      padding-top: 50px
+      .owl-nav
+        display: block
+        .owl-prev, .owl-next
+          width: 48px
+          height: 48px
+          border: solid 3px #e1e9ec
+          color: #e1e9ec
+          background: transparent
+          font-size: 30px
+          border-radius: 10em
+          text-align: center
+          line-height: 48px
+          position: absolute
+          top: 40%
+          transition: all .5s ease
+          i
+            position: relative
+            top: -3px
+            left: -2px
+          &:hover
+            color: #fff
+            border-color: #fff
+        .owl-prev
+          left: -75px
+        .owl-next
+          right: -75px
+          i
+            left: 2px
+      .item
+        background: transparent
+        padding: 35px 50px
+        position: relative
+        &::before
+          content: ''
+          position: absolute
+          width: 100%
+          height: 460px
+          background: #fff
+          top: 0
+          left: 0
+          z-index: -1
+        .left, .right
+          float: left
+          width: 50%
+        .left
+          padding-right: 15px
+          .left-top
+            .logo
+              float: left
+            .free
+              float: left
+              text-transform: uppercase
+              font-size: 15px
+              padding-top: 20px
+              padding-left: 40px
+              span
+                color: #4ed9b7
+                font-weight: bold
+          .info
+            padding-top: 45px
+            font-size: 15px
+            span
+              font-weight: bold
+              line-height: 1.75
+          .icons
+            width: 120%
+            margin-left: -6%
+            padding-top: 15px
+            & > div
+              float: left
+              width: 30%
+              text-align: center
+              padding-top: 45px
+          .button
+            margin-top: 10px
+            display: inline-block
+            border: solid 3px #fcd748
+            border-radius: 10em
+            padding: 11px 50px 13px
+            font-size: 17px
+        .right
+          img
+            box-shadow: 0 0 50px rgba(0,0,0,.5)
+
+  &-choice
+    background: url(../img/choice.jpg) no-repeat center / cover
+    .h
+      line-height: 1.1
+      position: relative
+      top: 100px
+      .h2
+        font-weight: 500
+        font-size: 25px
+      .text
+        color: #4c4c4c
+        font-size: 15px
+    .wheel
+      padding-top: 180px
+      padding-bottom: 180px
+      .center
+        margin: 0 auto
+        width: 362px
+        height: 360px
+        background: url(../img/wheel.png) no-repeat center
+        padding-top: 155px
+        padding-left: 70px
+        position: relative
+        .logo
+          background: url(../img/logo.png) no-repeat left top
+          padding-top: 8px
+          padding-left: 78px
+          font-family: 'IgraSans'
+          font-size: 17px
+          text-transform: uppercase
+          line-height: 1
+          padding-bottom: 4px
+        .little-wheel
+          position: absolute
+          background: url(../img/little-wheel.png) no-repeat center
+          top: 100px
+          left: 100px
+          width: 150px
+          text-align: center
+          font-size: 15px
+          padding: 10px
+          span
+            font-weight: 500
+            font-size: 25px
+          &.one, &.five
+            top: 135px
+            left: -150px
+          &.five
+            left: auto
+            right: -150px
+          &.two, &.four
+            top: -40px
+            left: -100px
+          &.four
+            left: auto
+            right: -100px
+          &.three, &.seven
+            top: -110px
+            left: 106px
+          &.seven
+            top: auto
+            bottom: -110px
+          &.six, &.eight
+            top: 300px
+            left: -100px
+          &.six
+            left: auto
+            right: -100px
+  &-others
+    background: url(../img/others.jpg) no-repeat center / cover
+    padding-bottom: 50px
+    .h2
+      font-weight: 500
+      font-size: 25px
+      padding-top: 35px
+      padding-bottom: 22px
+    .dotsCont
+      [data-dot]
+        transform: scale(.5)
+        transition: transform .5s ease
+        text-align: center
+        margin-bottom: -40px
+        cursor: pointer
+        img
+          border: 8px solid #24c4c7
+          border-radius: 10em
+        &.active
+          transform: scale(.8)
+    .others-slider
+      padding-top: 50px
+      .item
+        background: #fff
+        padding: 38px
+        border: 1px solid #e3e8ec
+        .left, .right
+          float: left
+        .left
+          width: 40%
+          img
+            width: auto
+        .right
+          width: 60%
+          .h3
+            font-size: 25px
+            padding-bottom: 25px
+          .text
+            line-height: 1.45
+            padding-bottom: 22px
+          .button
+            display: inline-block
+            font-size: 17px
+            padding: 19px 80px 21px
+            background: linear-gradient(to top, #fd9e11, #fee54c)
+            border-radius: 10em
+            box-shadow: 0 6px 0 #b19733
+
+  &-projects
+    .h
+      line-height: 1.1
+      padding-top: 45px
+      .h2
+        font-weight: 500
+        font-size: 25px
+        position: relative
+        &::before
+          content: ''
+          width: 100%
+          height: 1px
+          background: #e6e6e6
+          position: absolute
+          left: -103%
+          top: 15px
+      .text
+        color: #4c4c4c
+        font-size: 15px
+    .projects-slider
+      padding-top: 15px
+      padding-bottom: 50px
+      .owl-nav
+        display: block
+        .owl-prev, .owl-next
+          width: 48px
+          height: 48px
+          border: solid 3px #e1e9ec
+          color: #e1e9ec
+          background: transparent
+          font-size: 30px
+          border-radius: 10em
+          text-align: center
+          line-height: 48px
+          position: absolute
+          top: 42%
+          transition: all .5s ease
+          i
+            position: relative
+            top: -3px
+            left: -2px
+          &:hover
+            color: #bfd3db
+            border-color: #bfd3db
+        .owl-prev
+          left: -90px
+        .owl-next
+          right: -90px
+          i
+            left: 2px
+      .item
+        .left
+          float: left
+          width: 46%
+          background: linear-gradient(to top left, #dddedf, #fefefe)
+          padding: 10px
+          border: #eaeaea solid 1px
+          text-align: center
+          a:not(.main) img
+            display: inline-block
+            width: 32.33%
+            height: auto
+          .main
+            display: block
+            margin-bottom: 10px    
+        .right
+          float: right
+          width: 44%
+          .h3
+            padding-left: 30px
+            text-transform: uppercase
+            padding-bottom: 7px
+            border-bottom: #fcd748 solid 1px
+            margin-bottom: 10px
+          .about
+            padding-left: 30px
+            background: url(../img/proj-house.png) no-repeat left top
+            line-height: 1.3
+            padding-bottom: 7px
+            border-bottom: #fcd748 solid 1px
+            margin-bottom: 10px
+            .h4
+              line-height: 1.7
+            span
+              font-weight: 500
+          .com
+            padding-bottom: 7px
+            border-bottom: #fcd748 solid 1px
+            margin-bottom: 10px
+            .h4
+              padding-left: 30px
+            li
+              float: left
+              width: 50%
+              font-size: 15px
+              background: url(../img/proj-com.png) no-repeat left center
+              padding: 7px 30px 7px
+          .price
+            padding-left: 30px
+            background: url(../img/proj-price.png) no-repeat left top
+            font-weight: 500
+          .button
+            display: inline-block
+            margin-top: 15px
+            font-size: 17px
+            padding: 19px 40px 21px
+            background: linear-gradient(to top, #fd9e11, #fee54c)
+            border-radius: 10em
+            box-shadow: 0 6px 0 #b19733
+
+  &-projform
+    background: url(../img/proj-form.jpg) no-repeat center / cover
+    padding-top: 105px
+    padding-bottom: 60px
+    .form
+      width: 820px
+      margin: 0 auto
+      background: #fff
+      border: 1px solid #dadbd5
+      padding: 25px 40px 50px
+      position: relative
+      &::before
+        content: ''
+        width: 368px
+        height: 486px
+        position: absolute
+        top: -68px
+        left: 340px
+        background: url(../img/form-man.png) no-repeat center
+      .h2
+        font-size: 34px
+        line-height: 1
+      .comment
+        font-size: 15px
+        line-height: 1
+        padding-bottom: 30px
+      .who
+        position: absolute
+        top: 35px
+        right: 30px
+        font-size: 15px
+        span
+          font-weight: bold
+      form
+        width: 270px
+        input
+          font-size: 15px
+          color: #040404
+          padding: 18px 30px
+          border-radius: 10em
+          border: #cbcbcb solid 1px
+          width: 100%
+          margin-bottom: 14px
+          &::-webkit-input-placeholder
+            color: #666
+            opacity: 1
+
+          &:-moz-placeholder
+            color: #666
+            opacity: 1
+
+          &::-moz-placeholder
+            color: #666
+            opacity: 1
+
+          &:-ms-input-placeholder
+            color: #666
+            opacity: 1
+        .button
+          display: inline-block
+          font-size: 17px
+          padding: 19px 40px 21px
+          background: linear-gradient(to top, #fd9e11, #fee54c)
+          border-radius: 10em
+          box-shadow: 0 6px 0 #b19733
+          width: 100%
+          border: none
+
+  &-gallery
+    padding-bottom: 50px
+    .container
+      position: relative
+    .h2
+      font-size: 27px
+      font-weight: 500
+      padding: 50px 0
+    .h3
+      position: absolute
+      font-size: 56px
+      font-family: 'AvenirNextDemi'
+      right: 0
+      top: 30px
+      text-transform: uppercase
+      color: #e5e5e5
+    .gallery-slider
+      .item
+        text-align: center
+        a
+          display: block
+          position: relative
+          .about
+            position: absolute
+            top: 30%
+            left: 10%
+            width: 80%
+            height: 40%
+            background: linear-gradient(to top, #fd9d11, #fee54c)
+            font-weight: 500
+            font-size: 19px
+            display: flex
+            span
+              margin: auto
+              text-align: right
+              width: 80%
+              background: url(../img/camera.png) no-repeat left center
+              padding: 25px 0 25px 75px
+        img
+          width: auto
+          height: auto
+        &.double
+          a:first-child
+            margin-bottom: 15px
+      .owl-nav
+        display: block
+        .owl-prev, .owl-next
+          width: 48px
+          height: 48px
+          border: solid 3px #e1e9ec
+          color: #e1e9ec
+          background: transparent
+          font-size: 30px
+          border-radius: 10em
+          text-align: center
+          line-height: 48px
+          position: absolute
+          top: 44%
+          transition: all .5s ease
+          i
+            position: relative
+            top: -3px
+            left: -2px
+          &:hover
+            color: #bfd3db
+            border-color: #bfd3db
+        .owl-prev
+          left: -60px
+        .owl-next
+          right: -60px
+          i
+            left: 2px
+  
+  &-reviews
+    padding-bottom: 50px
+    .h
+      line-height: 1.75
+      padding-bottom: 36px
+      .h2
+        font-weight: 500
+        font-size: 25px
+      .text
+        color: #4c4c4c
+        font-size: 15px
+    .reviews-slider
+      .item
+        text-align: center
+        position: relative
+        cursor: pointer
+        .h3
+          position: absolute
+          bottom: 0
+          left: 0
+          background: linear-gradient(to bottom, #fee44b, #fda215)
+          font-size: 15px
+          font-weight: normal
+          padding: 5px 50px 5px 10px
+          .fa
+            position: absolute
+            right: 10px
+            top: 7px
+            color: #fff
+        &.video::before
+          content: ''
+          position: absolute
+          width: 100%
+          height: 100%
+          top: 0
+          left: 0
+          background: url(../img/review-video.png) no-repeat center
+      .owl-nav
+        display: block
+        .owl-prev, .owl-next
+          width: 48px
+          height: 48px
+          border: solid 3px #e1e9ec
+          color: #e1e9ec
+          background: transparent
+          font-size: 30px
+          border-radius: 10em
+          text-align: center
+          line-height: 48px
+          position: absolute
+          top: 44%
+          transition: all .5s ease
+          i
+            position: relative
+            top: -3px
+            left: -2px
+          &:hover
+            color: #bfd3db
+            border-color: #bfd3db
+        .owl-prev
+          left: -60px
+        .owl-next
+          right: -60px
+          i
+            left: 2px
+    .bottom-panel
+      width: 80%
+      margin: 0 auto
+      padding: 10px
+      border: 1px solid #eaeaea
+      text-align: center
+      margin-top: 10px
+      box-shadow: 0 5px 20px rgba(0,0,0,.2)
+      a
+        display: inline-block
+        margin: 0 21px
+        padding-top: 5px
+        img
+          padding-right: 5px
+          margin-top: -5px
+        &:hover
+          text-decoration: underline
+
+  &-discount
+    background: url(../img/discount.jpg) no-repeat top center / cover
+    .form
+      margin-top: 100px
+      margin-left: 70px
+      padding: 25px 60px
+      position: relative
+      z-index: 10
+      width: 480px
+      margin-bottom: 100px
+      &::before
+        content: ''
+        top: -10%
+        left: -10%
+        position: absolute
+        width: 120%
+        height: 120%
+        background: linear-gradient(to top, #fd9d10, #fae14b)
+        z-index: -2
+        box-shadow: 0 10px 40px rgba(#000, .5)
+      &::after
+        content: ''
+        top: 0
+        left: 0
+        position: absolute
+        width: 100%
+        height: 100%
+        background: #fff
+        z-index: -1
+      .h2
+        font-size: 160px
+        font-weight: 900
+        line-height: .8
+        color: #fedf47
+      .h-text
+        font-family: 'AvenirNextDemi'
+        font-size: 58px
+        line-height: 1
+        text-transform: uppercase
+      .text
+        font-size: 21px
+        padding-bottom: 15px
+      input
+        font-size: 15px
+        color: #040404
+        padding: 18px 30px
+        border-radius: 10em
+        border: #cbcbcb solid 1px
+        width: 100%
+        margin-bottom: 14px
+        &::-webkit-input-placeholder
+          color: #666
+          opacity: 1
+
+        &:-moz-placeholder
+          color: #666
+          opacity: 1
+
+        &::-moz-placeholder
+          color: #666
+          opacity: 1
+
+        &:-ms-input-placeholder
+          color: #666
+          opacity: 1
+      .button
+        display: inline-block
+        font-size: 17px
+        padding: 19px 40px 21px
+        background: linear-gradient(to top, #fd9e11, #fee54c)
+        border-radius: 10em
+        box-shadow: 0 6px 0 #b19733
+        width: 100%
+        border: none
+      .comment
+        padding-top: 10px
+        font-size: 13px
+        text-align: center
+  
+  &-advantages
+    background: url(../img/advantages.jpg) no-repeat center / cover
+    padding-bottom: 190px
+    .h
+      line-height: 1.1
+      padding: 65px 0 100px
+      .h2
+        font-weight: 500
+        font-size: 25px
+      .text
+        color: #4c4c4c
+        font-size: 15px
+    .advantages
+      padding-left: 100px
+      .item
+        float: left
+        width: 30%
+        margin-right: 3%
+        background: #fff
+        border: solid 1px #e7e9eb
+        padding: 50px 0 10px 65px
+        min-height: 300px
+        box-shadow: 0 0 40px rgba(#000, .4)
+        position: relative
+        &::before
+          content: ''
+          position: absolute
+          width: 155px
+          height: 156px
+          background: url(../img/adv1.png) no-repeat center
+          left: -100px
+          top: 70px
+        &.two::before
+          background: url(../img/adv2.png) no-repeat center
+        &.three::before
+          background: url(../img/adv3.png) no-repeat center
+        .h3
+          font-size: 25px
+          line-height: 1.1
+          padding-bottom: 10px
+        .text
+          font-size: 15px
+        .button
+          display: inline-block
+          padding: 10px 40px 12px
+          background: linear-gradient(to top, #fd9e11, #fee54c)
+          border-radius: 10em
+          color: #fff
+          margin-bottom: 15px
+          font-size: 15px
+          margin-top: 45px
+          &.trans
+            background: transparent
+            border: solid 1px #fd9c10
+            color: #000
+            margin-top: 25px
+
+  &-smi
+    background: #f4f4f4
+    padding-bottom: 70px
+    & > .container
+      position: relative
+      & > .h3
+        position: absolute
+        font-size: 56px
+        font-family: 'AvenirNextDemi'
+        right: 50px
+        top: 10px
+        text-transform: uppercase
+        color: #e5e5e5
+    .h2
+      font-weight: 500
+      font-size: 25px
+      padding: 30px 0
+      position: relative
+      &::before
+        content: ''
+        width: 100%
+        height: 1px
+        background: #e6e6e6
+        position: absolute
+        left: -103%
+        top: 45px
+    .smi-slider
+      .item
+        position: relative
+        cursor: pointer
+        background: #fff
+        &::before
+          content: ''
+          position: absolute
+          width: 63px
+          height: 62px
+          background: url(../img/smi-play.png) no-repeat center
+          left: 50%
+          margin-left: -32px
+          top: 30%
+        &.clicked::before
+          content: none
+        .video
+          display: none
+        .h3
+          padding: 5px 20px
+          font-size: 16px
+          font-weight: 500
+      .owl-nav
+        .owl-prev, .owl-next
+          width: 48px
+          height: 48px
+          border: solid 3px #e1e9ec
+          color: #e1e9ec
+          background: transparent
+          font-size: 30px
+          border-radius: 10em
+          text-align: center
+          line-height: 48px
+          position: absolute
+          top: 37%
+          transition: all .5s ease
+          i
+            position: relative
+            top: -3px
+            left: -2px
+          &:hover
+            color: #fff
+            border-color: #fff
+        .owl-prev
+          left: -65px
+        .owl-next
+          right: -65px
+          i
+            left: 2px
+
+  &-feedback
+    background: url(../img/feedback.jpg) no-repeat center / cover
+    .content
+      background: url(../img/feedback-inner.png) no-repeat center bottom
+      min-height: 660px
+      .h2
+        padding-top: 80px
+        font-weight: 500
+        font-size: 25px
+        position: relative
+        &::before
+          content: ''
+          width: 100%
+          height: 1px
+          background: #e6e6e6
+          position: absolute
+          left: -103%
+          top: 95px
+      .inner
+        position: relative
+        .cloud
+          width: 380px
+          margin: 170px 0 0 26px
+          line-height: 1.5
+          height: 100%
+        .who
+          position: absolute
+          right: 275px
+          top: -210px
+          span
+            font-weight: bold
+        .phone
+          position: absolute
+          right: 0
+          top: 0
+          a
+            font-weight: 900
+            font-size: 25px
+            color: #fda013
+          .com
+            font-size: 21px
+            line-height: 1
+
+
+  &-map
+    & > .container
+      position: relative
+    .h2
+      padding: 70px 0 70px
+      font-weight: 500
+      font-size: 25px
+      position: relative
+      &::before
+        content: ''
+        width: 100%
+        height: 1px
+        background: #e6e6e6
+        position: absolute
+        left: -103%
+        top: 85px
+    .h3
+      position: absolute
+      font-size: 56px
+      font-family: 'AvenirNextDemi'
+      right: 0
+      top: 50px
+      text-transform: uppercase
+      color: #e5e5e5
+    .map
+      max-height: 560px
+      overflow: hidden
+      .content
+        background: linear-gradient(to top, #fd9c10, #fee54c)
+        float: right
+        width: 30%
+        height: 560px
+        position: relative
+        top: -560px
+        padding-top: 118px
+        text-align: center
+        font-size: 15px
+        .logo
+          background: url(../img/map-logo.png) no-repeat left top
+          padding-top: 2px
+          padding-left: 68px
+          font-family: 'IgraSans'
+          font-size: 17px
+          text-transform: uppercase
+          line-height: 1
+          padding-bottom: 4px
+          display: inline-block
+          text-align: left
+          margin-bottom: 40px
+        p
+          margin-bottom: 20px
+        .phone
+          padding-top: 28px
+          background: url(../img/map-phone.png) no-repeat center top
+        .address
+          padding-top: 28px
+          background: url(../img/map-geo.png) no-repeat center top
+
+.footer
+  padding: 50px 0
+  background: #fafafa
+  font-size: 15px
+  .left, .center, .right
+    float: left
+    width: 33.33%
+  .left
+    .phone
+      padding-left: 65px
+      background: url(../img/footer-phone.png) no-repeat left center
+      a
+        font-size: 25px
+    .address
+      padding: 10px 0 10px 65px
+    .map
+      display: inline-block
+      padding: 10px 0 0 0
+      margin-left: 65px
+      border-bottom: dashed 1px #000
+  .center
+    line-height: 1.5
+    input
+      border: none
+      border-bottom: 2px solid #000
+      background: transparent
+      width: 290px
+      margin-top: 45px
+      position: relative
+      padding-right: 20px
+    .button
+      border: none
+      background: transparent
+      font-weight: bold
+      font-size: 17px
+      position: relative
+      left: -25px
+  .right
+    line-height: 1.5
+    .mail
+      text-transform: uppercase
+      text-decoration: underline
+    .button
+      display: inline-block
+      font-size: 17px
+      padding: 14px 70px 16px
+      background: linear-gradient(to top, #fd9e11, #fee54c)
+      border-radius: 10em
+      box-shadow: 0 6px 0 #b19733
+      margin-top: 10px
+
+.popup-wrapper
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  width: 100%
+  z-index: 200
+  display: none
+  &.thanks
+    .content
+      height: 100%
+      width: 100%
+      background: rgba(0,0,0,.5)
+      display: flex
+      .thanks
+        margin: auto
+        width: 721px
+        height: 390px
+        background: url(../img/thanks.jpg) no-repeat center
+        position: relative
+        .h3
+          padding-top: 150px
+          padding-left: 75px
+          font-size: 33px
+          font-weight: bold
+        .text
+          font-size: 15px
+          padding-left: 75px
+        .close
+          color: #fff
+          position: absolute
+          top: 4px
+          right: 7px
+          font-size: 15px
+  &.form
+    .content
+      height: 100%
+      width: 100%
+      background: rgba(0,0,0,.5)
+      display: flex
+      .form
+        margin: auto
+        background: #fff
+        padding: 30px
+        width: 400px
+        position: relative
+        z-index: 10
+        &::before
+          content: ''
+          position: absolute
+          width: 110%
+          height: 110%
+          top: -5%
+          left: -5%
+          background: linear-gradient(to top, #fd9d11, #fee54c)
+          z-index: -1
+        &::after
+          content: ''
+          position: absolute
+          width: 100%
+          height: 100%
+          top: 0
+          left: 0
+          background: #fff
+          z-index: -1
+        .close
+          color: #fff
+          position: absolute
+          top: -55px
+          right: -50px
+          font-size: 30px
+          transition: color .3s ease
+          &:hover
+            color: #fee54c
+        .h3
+          font-size: 25px
+          font-family: 'AvenirNextDemi'
+        .text
+          font-size: 15px
+          padding-bottom: 25px
+        input
+          display: inline-block
+          width: 100%
+          font-size: 15px
+          padding: 20px 30px
+          border-radius: 10em
+          border: solid 1px #e3e3e3
+          margin-bottom: 15px
+        .button
+          display: inline-block
+          font-size: 14px
+          padding: 21px 40px 19px
+          background: linear-gradient(to top, #fd9e11, #fee54c)
+          border-radius: 10em
+          box-shadow: 0 6px 0 #b19733
+          border: none
+          width: 100%
+          font-weight: bold
+          text-transform: uppercase
+  &.video
+    .content
+      height: 100%
+      width: 100%
+      background: rgba(0,0,0,.5)
+      display: flex
+      .video
+        margin: auto
+        position: relative
+        .close
+          color: #fff
+          position: absolute
+          top: -35px
+          right: -30px
+          font-size: 30px
+          transition: color .3s ease
+          &:hover
+            color: #fee54c
+
+#map
+  height: 560px
+
+
+@keyframes nav
+  0%
+    transform: translateY(-100%)
+  100%
+    transform: translateY(0)
